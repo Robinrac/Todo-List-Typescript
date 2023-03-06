@@ -20,11 +20,20 @@ function App() {
     console.log(tasks)
   }
 
+  const removeTaskHandler = (taskId: number) => {
+    setTasks((currentTasks) => {
+      return currentTasks.filter((task) => task.id !== taskId);
+    });
+  };
+
 
   return (<>
 
     <NewTask getTask = {newTaskHandler}></NewTask>
-    <List getAllTasks = {tasks}></List>
+    <List 
+    getAllTasks = {tasks}
+    removeTask={removeTaskHandler}
+    ></List>
   </>);
 }
 

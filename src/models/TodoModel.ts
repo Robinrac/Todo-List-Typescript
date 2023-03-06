@@ -8,6 +8,11 @@ class TodoModel{
         this.id = Math.random();
         this.taskDone = taskDone;
     }
+
+    toggleTaskDone() {
+        this.taskDone = !this.taskDone;
+      }
+
 }
 
 export default TodoModel

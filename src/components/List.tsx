@@ -3,6 +3,7 @@ import TodoModel from '../models/TodoModel'
 
 interface IList {
     getAllTasks: TodoModel[];
+    removeTask: (id: number) => void;
 }
 
 const List = (props: IList) => {
@@ -12,6 +13,7 @@ const List = (props: IList) => {
         {props.getAllTasks.map((findTask) => 
         <ListTasks
         tasks={findTask.task}
+        removeTask={props.removeTask.bind(null,findTask.id)}
         ></ListTasks>
         
         )}
