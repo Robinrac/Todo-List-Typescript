@@ -1,17 +1,13 @@
 class TodoModel{
     task: string;
     id: number;
-    taskDone: boolean;
+    completeTask: boolean;
 
-    constructor (task: string, taskDone: boolean) {
+    constructor (task: string, completeTask: boolean) {
         this.task = task;
         this.id = Math.random();
-        this.taskDone = taskDone;
+        this.completeTask = completeTask;
     }
-
-    toggleTaskDone() {
-        this.taskDone = !this.taskDone;
-      }
 
 }
 

@@ -8,6 +8,7 @@ import List from './components/List'
 function App() {
 
   const [tasks, setTasks] = useState<TodoModel[]>([]);
+  const [completeTask, setCompleteTask] = useState(false)
 
   const newTaskHandler = (task: string) => {
     const newTask = new TodoModel(task, false)
@@ -26,6 +27,23 @@ function App() {
     });
   };
 
+  const taskDoneHandler = (taskId: number) => {
+    setTasks
+    (
+      tasks.map((task) => {
+        if (task.id === taskId) 
+        {
+          if(task.completeTask === false){return { ...task, completeTask: true};}
+          else {return { ...task, completeTask: false };}   
+        } 
+        else 
+        {
+          return task;
+        }
+      })
+    )
+  }
+
 
   return (<>
 
@@ -33,6 +51,8 @@ function App() {
     <List 
     getAllTasks = {tasks}
     removeTask={removeTaskHandler}
+    taskDone={taskDoneHandler}
+    completeTask={completeTask}
     ></List>
   </>);
 }
