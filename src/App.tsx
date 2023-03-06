@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+
+import './CSS/App.css';
+import NewTask from './components/NewTask'
+import TodoModel from './models/TodoModel'
+import List from './components/List'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  const [tasks, setTasks] = useState<TodoModel[]>([]);
+
+  const newTaskHandler = (task: string) => {
+    const newTask = new TodoModel(task, false)
+
+    setTasks((currentTasks) => {
+      return currentTasks.concat(newTask)
+    });
+
+    console.log(newTask)
+    console.log(tasks)
+  }
+
+
+  return (<>
+
+    <NewTask getTask = {newTaskHandler}></NewTask>
+    <List getAllTasks = {tasks}></List>
+  </>);
 }
 
 export default App;
