@@ -1,6 +1,7 @@
+import './CSS/App.css';
+
 import { useState } from 'react'
 
-import './CSS/App.css';
 import NewTask from './components/NewTask'
 import TodoModel from './models/TodoModel'
 import List from './components/List'
@@ -47,13 +48,16 @@ function App() {
 
   return (<>
 
-    <NewTask getTask = {newTaskHandler}></NewTask>
-    <List 
-    getAllTasks = {tasks}
-    removeTask={removeTaskHandler}
-    taskDone={taskDoneHandler}
-    completeTask={completeTask}
-    ></List>
+    <div id="main-content">
+      <NewTask getTask = {newTaskHandler}/>
+      <List 
+      getAllTasks = {tasks}
+      removeTask={removeTaskHandler}
+      taskDone={taskDoneHandler}
+      completeTask={completeTask}
+      />
+    </div>
+
   </>);
 }
 

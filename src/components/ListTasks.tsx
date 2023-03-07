@@ -1,4 +1,7 @@
+import './ListTasks.css'
+
 import { GrTrash } from 'react-icons/gr';
+
 
 // npm install react-icons --save
 
@@ -9,16 +12,20 @@ interface IListTasks {
     completeTask: boolean
 }
 
-function ListTasks (props:IListTasks) {
-
-    return(<>
-    
-        <li onClick={props.taskDone} style={{ textDecoration: props.completeTask ? "line-through" : "none"}}>
-            {props.tasks}
-            <GrTrash onClick={props.removeTask} />
+function ListTasks(props: IListTasks) {
+    const handleRemoveTaskClick = (e: React.MouseEvent) => {
+      e.stopPropagation();
+      props.removeTask(e);
+    };
+  
+    return (
+      <>
+        <li onClick={props.taskDone} style={{ textDecoration: props.completeTask ? "line-through" : "none" }} id="list-element">
+          {props.tasks}
+          <GrTrash onClick={handleRemoveTaskClick} />
         </li>
-    </>)
-
-}
+      </>
+    );
+  }
 
 export default ListTasks
